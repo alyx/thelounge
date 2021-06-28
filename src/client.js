@@ -17,6 +17,7 @@ const PublicClient = require("./plugins/packages/publicClient");
 
 const MessageStorage = require("./plugins/messageStorage/sqlite");
 const TextFileMessageStorage = require("./plugins/messageStorage/text");
+const LokiMessageStorage = require("./plugins/messageStorage/loki");
 
 module.exports = Client;
 
@@ -79,6 +80,10 @@ function Client(manager, name, config = {}) {
 
 		if (Helper.config.messageStorage.includes("text")) {
 			client.messageStorage.push(new TextFileMessageStorage(client));
+		}
+
+		if (Helper.config.messageStorage.includes("loki")) {
+			client.messageStorage.push(new LokiMessageStorage(client));
 		}
 
 		for (const messageStorage of client.messageStorage) {

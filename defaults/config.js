@@ -17,6 +17,7 @@ module.exports = {
 	//
 	// This value is set to `false` by default.
 	public: false,
+	lokiHost: "localhost",
 
 	// ### `host`
 	//
